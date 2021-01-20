@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"watch": true,
+		"target": "ES6",
+		"moduleResolution": "node",
+		"module": "ES2020",
+		"allowSyntheticDefaultImports": true,
+		"outDir": "dist/",
+		"baseUrl": "./src",
+		"lib": ["ES2019", "DOM"],
+		"noImplicitAny": false
+	},
+	"include": ["src/"]
+}
