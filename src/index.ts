@@ -1,4 +1,6 @@
 import fs from "fs";
+import { send } from "process";
+import { formatWithOptions } from "util";
 // type TransactionDetails = "Payment issued through !pay" | "Chips claimed" | "Market purchase";
 interface DBItem {
 	_id: {
@@ -72,6 +74,11 @@ enum ItemType {
 	MarketBuy,
 	ChipClaim
 }
+interface SimpleTransaction {
+	sender: string;
+	reciever: string;
+	amount: number;
+};
 function resolveType(item: Item): ItemType {
 	//@ts-ignore
 	if (item.details == undefined) return ItemType.TransactionV1;
@@ -93,41 +100,81 @@ function assignType(item: Item): void {
 // const checkID = "456465826728378382" // Kieffer
 // const checkID = "265004575142969344"; // Claw
 // const checkID = "165195486746116096"; // Garag
-const checkID = "164525273503498240"; // Craven
+// const checkID = "164525273503498240"; // Craven
 const json = fs.readFileSync("../transactionHistory.json", "utf8");
 const data: Item[] = JSON.parse(json);
-let totalSent = 0;
-let totalRec = 0;
-function handleItem(item: Item) {
-	switch (item.type) {
-		case ItemType.TransactionV1:
-			if (item.receiver == checkID) {
-				// console.log(`${item.sender} -> ${item.receiver} (${item.amount})`);
-				totalRec += item.amount;
-			}
-			if (item.sender == checkID) {
-				// console.log(`${item.sender} -> ${item.receiver} (${item.amount})`);
-				totalSent += item.amount;
-			}
-			break;
-		case ItemType.TransactionV2:
-		case ItemType.TransactionV3:
-			if (item.receiver_id == checkID) {
-				// console.log(`${item.sender_id} -> ${item.receiver_id} (${item.amount})`);
-				totalRec += item.amount;
-			}
-			if (item.sender_id == checkID) {
-				// console.log(`${item.sender_id} -> ${item.receiver_id} (${item.amount})`);
-				totalSent += item.amount;
-			}
-			break;
-	}
+const handledUsers: string[] = [];
+const transactions: SimpleTransaction[] = [];
+
+function makeUserData(id: string) {
+	handledUsers.push(id);
+
+	const recives: Record<string, number> = {};
+	const sends: Record<string, number> = {};
+	transactions.forEach(transaction => {
+		if (transaction.sender == id) {
+			if (!sends[transaction.reciever]) sends[transaction.reciever] = 0;
+			sends[transaction.reciever] += transaction.amount;
+		}
+		if (transaction.reciever == id) {
+			if (!recives[transaction.sender]) recives[transaction.sender] = 0;
+			recives[transaction.sender] += transaction.amount;
+		}
+	});
+	const sum: Record<string, number> = {};
+	Object.keys(recives).forEach(userID => {
+		if (!sum[userID]) sum[userID] = 0;
+		sum[userID] = recives[userID];
+		if (sends[userID]) sum[userID] -= sends[userID];
+	});
+	Object.keys(sends).forEach(userID => {
+		if (!sum[userID]) sum[userID] = 0;
+		if (recives[userID]) sum[userID] = recives[userID];
+		sum[userID] -= sends[userID];
+	});
+	const csv = Object.keys(sum).map(uid => `${uid},${sum[uid]}`).join("\n");
+	if (csv.length > 0) fs.writeFileSync(`../users/${id}.csv`, csv);
 }
-data.forEach(item => {
-	assignType(item);
-	handleItem(item);
-});
-console.log(`Total chips sent: ${totalSent}\nToatal chips recived: ${totalRec}\nDiff: ${totalRec - totalSent}`);
+function startUser(id: string) {
+	if (handledUsers.includes(id)) return;
+	handledUsers.push(id);
+	makeUserData(id);
+}
+function init() {
+	data.forEach(assignType);
+	data.forEach(item => {
+		let isTransaction = false;
+		let sender = "";
+		let reciever = "";
+		let amount = 0;
+		switch (item.type) {
+			case ItemType.TransactionV1:
+				isTransaction = true;
+				sender = item.sender;
+				reciever = item.receiver;
+				amount = item.amount;
+				break;
+			case ItemType.TransactionV2:
+			case ItemType.TransactionV3:
+				isTransaction = true;
+				sender = item.sender_id;
+				reciever = item.receiver_id;
+				amount = item.amount;
+				break;
+		}
+		if (isTransaction) {
+			transactions.push({ sender, reciever, amount });
+		}
+	});
+}
+function run() {
+	transactions.forEach(transaction => {
+		startUser(transaction.sender);
+		startUser(transaction.reciever);
+	});
+}
+init();
+run();
 
 /*
 {
