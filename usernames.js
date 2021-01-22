@@ -1,0 +1,730 @@
+const usernames = [{
+	"id": "650800972708446239",
+	"username": "AutoVC"
+}, {
+	"id": "741070724256628836",
+	"username": "C3Bro"
+}, {
+	"id": "260801045377187840",
+	"username": "The_Aries"
+}, {
+	"id": "660212077981335552",
+	"username": "Maximum Entropy"
+}, {
+	"id": "140207461939281920",
+	"username": "Lumi Virtual"
+}, {
+	"id": "273246339536650240",
+	"username": "SDGoD"
+}, {
+	"id": "69979252740599808",
+	"username": "Stimpy-66"
+}, {
+	"id": "571736846988607506",
+	"username": "reverentsatyr"
+}, {
+	"id": "202456028258893824",
+	"username": "Enoshade"
+}, {
+	"id": "657991152468885509",
+	"username": "Filio"
+}, {
+	"id": "339604832396640269",
+	"username": "Belen"
+}, {
+	"id": "424759721518432256",
+	"username": "strikeeaglekyle"
+}, {
+	"id": "177618280498855936",
+	"username": "CF"
+}, {
+	"id": "717011399309787176",
+	"username": "-=[Week-the Phoenix]=-"
+}, {
+	"id": "150468450718842880",
+	"username": "Tatakai"
+}, {
+	"id": "322501682380537856",
+	"username": "Maxumall"
+}, {
+	"id": "188942275634528257",
+	"username": "Saint Porolonius"
+}, {
+	"id": "225613815172038658",
+	"username": "Dr. Christoph"
+}, {
+	"id": "709216669112860751",
+	"username": "Blargh"
+}, {
+	"id": "196376237344555008",
+	"username": "EdgarGrim"
+}, {
+	"id": "182936015894216714",
+	"username": "Bluelight"
+}, {
+	"id": "336513058526461953",
+	"username": "Gubbleduzz"
+}, {
+	"id": "254292897413726208",
+	"username": "Archduke"
+}, {
+	"id": "425609688441159682",
+	"username": "Blinded"
+}, {
+	"id": "195556031579815936",
+	"username": "Schmeissenstein"
+}, {
+	"id": "613070406911524904",
+	"username": "Azgiliath"
+}, {
+	"id": "274341010576769036",
+	"username": "Val"
+}, {
+	"id": "335965141889712129",
+	"username": "Togra"
+}, {
+	"id": "411334197953691668",
+	"username": "Lt.Starbound"
+}, {
+	"id": "321040346731511809",
+	"username": "LemonGrab"
+}, {
+	"id": "534141528256544780",
+	"username": "agirgis"
+}, {
+	"id": "519323768053825548",
+	"username": "VentusTraveler"
+}, {
+	"id": "287003315479511048",
+	"username": "G8M8N8"
+}, {
+	"id": "239808992191184896",
+	"username": "Loud"
+}, {
+	"id": "234499240045445121",
+	"username": "ohmelon"
+}, {
+	"id": "163412669095739393",
+	"username": "endmylifeplease"
+}, {
+	"id": "599964015086665741",
+	"username": "powerhouse"
+}, {
+	"id": "282610100894433282",
+	"username": "0neye"
+}, {
+	"id": "113505148885618688",
+	"username": "Dageran"
+}, {
+	"id": "341664179213565952",
+	"username": "Polar Bear"
+}, {
+	"id": "454612352772603904",
+	"username": "Xecor"
+}, {
+	"id": "444938865711513612",
+	"username": "Loumardes"
+}, {
+	"id": "448210429119037450",
+	"username": "Solon"
+}, {
+	"id": "199582442661740544",
+	"username": "DrifterAlgier"
+}, {
+	"id": "545857907766460418",
+	"username": "Willoguns"
+}, {
+	"id": "287887232466157568",
+	"username": "Lord Commissar"
+}, {
+	"id": "530817662746492947",
+	"username": "Ves6"
+}, {
+	"id": "473309924068294678",
+	"username": "Athena0621"
+}, {
+	"id": "103509816437149696",
+	"username": "Martin"
+}, {
+	"id": "745761942387556372",
+	"username": "Intel Node"
+}, {
+	"id": "258394009456607244",
+	"username": "Goosedoff"
+}, {
+	"id": "120288863087230979",
+	"username": "Vinyl"
+}, {
+	"id": "293898694930202624",
+	"username": "NateDogBull"
+}, {
+	"id": "208783690225025024",
+	"username": "FailPr00f"
+}, {
+	"id": "321322501131206656",
+	"username": "- Alexcat -"
+}, {
+	"id": "171197630632689664",
+	"username": "Lach"
+}, {
+	"id": "174298948389830657",
+	"username": "Shiva"
+}, {
+	"id": "359158042467631105",
+	"username": "MegStar5"
+}, {
+	"id": "447486573391511554",
+	"username": "Hankytank"
+}, {
+	"id": "209374794209034241",
+	"username": "siGa"
+}, {
+	"id": "587692603059994638",
+	"username": "Pondski"
+}, {
+	"id": "328822787357802499",
+	"username": "Waa7g8"
+}, {
+	"id": "347218522897645578",
+	"username": "Hentaper"
+}, {
+	"id": "202523196174499841",
+	"username": "Senkii"
+}, {
+	"id": "529480985524568065",
+	"username": "Theeep"
+}, {
+	"id": "149488787217448961",
+	"username": "Gravn"
+}, {
+	"id": "329684916159643650",
+	"username": "Elsweyr"
+}, {
+	"id": "175072641919614976",
+	"username": "Battle_wrath"
+}, {
+	"id": "286211697872470016",
+	"username": "OmegaOne"
+}, {
+	"id": "223823503449784320",
+	"username": "MWire"
+}, {
+	"id": "203176347437236225",
+	"username": "Captain R_©™"
+}, {
+	"id": "348678305517666305",
+	"username": "Subway"
+}, {
+	"id": "173028692077969408",
+	"username": "Gray J. Jackson TeamRDDBCore"
+}, {
+	"id": "308851097039142914",
+	"username": "TheMarksman"
+}, {
+	"id": "329928420643307520",
+	"username": "Execade"
+}, {
+	"id": "414925527384588291",
+	"username": "Nugg‽"
+}, {
+	"id": "298431874227896329",
+	"username": "FFT2003"
+}, {
+	"id": "144308935053148160",
+	"username": "ZelphJason"
+}, {
+	"id": "373858226199986188",
+	"username": "Morgæna"
+}, {
+	"id": "459437139222986752",
+	"username": "Dracunculus medinensis"
+}, {
+	"id": "558771826902302771",
+	"username": "Septillion"
+}, {
+	"id": "613753494557687822",
+	"username": "Maximilian"
+}, {
+	"id": "720161993428041730",
+	"username": "Deechi"
+}, {
+	"id": "468420859489681409",
+	"username": "Gama-1-1"
+}, {
+	"id": "406948140953108491",
+	"username": "Your god cannot save you now"
+}, {
+	"id": "226634277662490624",
+	"username": "Zijkhal"
+}, {
+	"id": "118597198664564740",
+	"username": "Executioner"
+}, {
+	"id": "241338556889563136",
+	"username": "ClosetNerd"
+}, {
+	"id": "231598643537248257",
+	"username": "Neowinter"
+}, {
+	"id": "253871959413227522",
+	"username": "Nivrak"
+}, {
+	"id": "241248893621239808",
+	"username": "Xenos"
+}, {
+	"id": "272807433208856576",
+	"username": "The Dot Hand"
+}, {
+	"id": "142490854274105344",
+	"username": "GluxDesigns"
+}, {
+	"id": "283692157511008256",
+	"username": "gitlitwitit"
+}, {
+	"id": "699352321385169037",
+	"username": "Utility Module"
+}, {
+	"id": "530954470834700288",
+	"username": "just a mind"
+}, {
+	"id": "165195486746116096",
+	"username": "garageagle"
+}, {
+	"id": "236931374722973698",
+	"username": "Frovy"
+}, {
+	"id": "509163481438617621",
+	"username": "Livid"
+}, {
+	"id": "629694133455290370",
+	"username": "[DSI] Captain Riker"
+}, {
+	"id": "190560303681896448",
+	"username": "Frey Oakfist"
+}, {
+	"id": "776970642108186655",
+	"username": "StrikeNeedsPings"
+}, {
+	"id": "152296946520948736",
+	"username": "Thunderr"
+}, {
+	"id": "538677766279659541",
+	"username": "AMWild"
+}, {
+	"id": "301441067004329984",
+	"username": "Sheep"
+}, {
+	"id": "688876972511592702",
+	"username": "oe"
+}, {
+	"id": "186652084433715200",
+	"username": "Raptors (they/them)"
+}, {
+	"id": "137237535700156416",
+	"username": "Lukas04"
+}, {
+	"id": "165218678097313792",
+	"username": "overtyped"
+}, {
+	"id": "665310034514673686",
+	"username": "Chipware"
+}, {
+	"id": "328288016147677185",
+	"username": "big wang"
+}, {
+	"id": "684888487518011435",
+	"username": "glub"
+}, {
+	"id": "280553457457430529",
+	"username": "Nervosus"
+}, {
+	"id": "149337600656670720",
+	"username": "Knightjames"
+}, {
+	"id": "127822990699266050",
+	"username": "Sinistrus"
+}, {
+	"id": "251093424365764608",
+	"username": "Surf"
+}, {
+	"id": "116268274232066048",
+	"username": "Kenetor"
+}, {
+	"id": "292803015562231819",
+	"username": "Brodawg"
+}, {
+	"id": "265004575142969344",
+	"username": "Claw262"
+}, {
+	"id": "582422787466067980",
+	"username": "VilleFB"
+}, {
+	"id": "294819837652369408",
+	"username": "FreeFr34"
+}, {
+	"id": "98086552931938304",
+	"username": "MrXeno"
+}, {
+	"id": "670591976986509315",
+	"username": "Intel Link"
+}, {
+	"id": "129728601409978368",
+	"username": "Usafviper"
+}, {
+	"id": "256249250571223040",
+	"username": "Funcle Sunny"
+}, {
+	"id": "639514410926473234",
+	"username": "KageGeist"
+}, {
+	"id": "515559463135215631",
+	"username": "Siegfried-"
+}, {
+	"id": "272913189442813952",
+	"username": "Jakobx13"
+}, {
+	"id": "290478778873020416",
+	"username": "Havoc1917 👁"
+}, {
+	"id": "592392323397189648",
+	"username": "Brodo Fraggins"
+}, {
+	"id": "579582501132042252",
+	"username": "Captainatom931"
+}, {
+	"id": "733720929993228329",
+	"username": "Collective Central Mind"
+}, {
+	"id": "721185694688608306",
+	"username": "Starmap"
+}, {
+	"id": "370753346518253579",
+	"username": "Medic"
+}, {
+	"id": "477132815033434113",
+	"username": "Saris"
+}, {
+	"id": "281571341696761856",
+	"username": "Fisker"
+}, {
+	"id": "146089176226463744",
+	"username": "Vavalon"
+}, {
+	"id": "307299124150272002",
+	"username": "Cretannia"
+}, {
+	"id": "190750549426044928",
+	"username": "Casparov"
+}, {
+	"id": "696097900844810381",
+	"username": "Tanagrinhalo6"
+}, {
+	"id": "253865975168892928",
+	"username": "a pohjois"
+}, {
+	"id": "349260203730141184",
+	"username": "Panzer"
+}, {
+	"id": "148502525920673792",
+	"username": "SirSoulless"
+}, {
+	"id": "212332373751103489",
+	"username": "PHoenixOPHury"
+}, {
+	"id": "333680297122201613",
+	"username": "Jose_Ducha"
+}, {
+	"id": "560579702209773589",
+	"username": "Mae!"
+}, {
+	"id": "511205053424730132",
+	"username": "Psykey"
+}, {
+	"id": "320488449734082562",
+	"username": "GeneralSyb"
+}, {
+	"id": "486259209319481376",
+	"username": "GamingPigeon"
+}, {
+	"id": "140641604812668928",
+	"username": "GamingMoose"
+}, {
+	"id": "203700132921868288",
+	"username": "Nyefari"
+}, {
+	"id": "435393425957978114",
+	"username": "mrchip"
+}, {
+	"id": "370391698439929856",
+	"username": "TNT_MAN"
+}, {
+	"id": "381099254866771968",
+	"username": "g.w.a.c.a."
+}, {
+	"id": "415728773108072449",
+	"username": "venomelf"
+}, {
+	"id": "456465826728378382",
+	"username": "Kieffer5101"
+}, {
+	"id": "359102094277607424",
+	"username": "Shwetty26"
+}, {
+	"id": "252894830378614784",
+	"username": "LoadingLoot"
+}, {
+	"id": "200020504248188928",
+	"username": "Warner"
+}, {
+	"id": "188956164950720512",
+	"username": "Timothy"
+}, {
+	"id": "544699187061719040",
+	"username": "SixteenAlphabets"
+}, {
+	"id": "269712644334813184",
+	"username": "Syber"
+}, {
+	"id": "289260882691883008",
+	"username": "canary"
+}, {
+	"id": "149534494032920576",
+	"username": "Popchip"
+}, {
+	"id": "320623904681099266",
+	"username": "admiral bard"
+}, {
+	"id": "349339444702347274",
+	"username": "kidx9"
+}, {
+	"id": "173390738619367424",
+	"username": "William_Temeraire"
+}, {
+	"id": "235501536082526208",
+	"username": "Pyro"
+}, {
+	"id": "84309520582455296",
+	"username": "Nordwolf"
+}, {
+	"id": "156203282354667520",
+	"username": "Aleuvian"
+}, {
+	"id": "548912410937786368",
+	"username": "Eagle's Test Account"
+}, {
+	"id": "350775822518321152",
+	"username": "LegoProdigy"
+}, {
+	"id": "147672180631666688",
+	"username": "rolfsten"
+}, {
+	"id": "679056629123252244",
+	"username": "foca"
+}, {
+	"id": "373135498367205389",
+	"username": "XanderSae"
+}, {
+	"id": "266266802466717696",
+	"username": "Waselon"
+}, {
+	"id": "564981058483781632",
+	"username": "The_Gaming_Tortoise"
+}, {
+	"id": "642147170144878595",
+	"username": "Kronos"
+}, {
+	"id": "232531135328944129",
+	"username": "V-Sync"
+}, {
+	"id": "438592241993252864",
+	"username": "Warrior"
+}, {
+	"id": "110016179732516864",
+	"username": "OldRockgod"
+}, {
+	"id": "240840143936815114",
+	"username": ".BadNation"
+}, {
+	"id": "530250237663641601",
+	"username": "Combustible"
+}, {
+	"id": "475387415469621278",
+	"username": "ExtendedMag"
+}, {
+	"id": "472022116309663762",
+	"username": "Lunar"
+}, {
+	"id": "265217534939234304",
+	"username": "DevL"
+}, {
+	"id": "155716748585205760",
+	"username": "xedre"
+}, {
+	"id": "746804295965343875",
+	"username": "JimTheGreek13"
+}, {
+	"id": "114177875032145928",
+	"username": "PvtGrumpy"
+}, {
+	"id": "182890528768000002",
+	"username": "Volcano"
+}, {
+	"id": "446395888785686538",
+	"username": "Aces"
+}, {
+	"id": "386333744187047946",
+	"username": "awafflemaster42"
+}, {
+	"id": "164525273503498240",
+	"username": "Craven"
+}, {
+	"id": "237604945459675136",
+	"username": "Palladium"
+}, {
+	"id": "179943505119019011",
+	"username": "vernes"
+}, {
+	"id": "318756837266554881",
+	"username": "IHave"
+}, {
+	"id": "430061353999532034",
+	"username": "Niffels"
+}, {
+	"id": "272143648114606083",
+	"username": "Strikeeaglechase"
+}, {
+	"id": "330670952730066946",
+	"username": "Fishboi"
+}, {
+	"id": "413502007605985280",
+	"username": "Bobereto"
+}, {
+	"id": "238481713183850496",
+	"username": "NumeraticNebula"
+}, {
+	"id": "533009808501112881",
+	"username": "CheesiestMaster"
+}, {
+	"id": "443640524130484235",
+	"username": "!⫷ 🅻🅸🆅🅸🅶🅾⫸!"
+}, {
+	"id": "498707844699258901",
+	"username": "Bondsmith"
+}, {
+	"id": "307235926956834817",
+	"username": "traditional"
+}, {
+	"id": "177617565487595521",
+	"username": "BagleMiester"
+}, {
+	"id": "598296108112019456",
+	"username": "PyRO"
+}, {
+	"id": "310231949455130624",
+	"username": "MoonSet"
+}, {
+	"id": "434711871061491716",
+	"username": "Azurethi"
+}, {
+	"id": "145153482243047424",
+	"username": "Podick"
+}, {
+	"id": "249159149269680129",
+	"username": "TheLostBoiT"
+}, {
+	"id": "219491115248648192",
+	"username": "Scadouge"
+}, {
+	"id": "206868454685409280",
+	"username": "destravous"
+}, {
+	"id": "150567278209925121",
+	"username": "Hatman"
+}, {
+	"id": "315242209081294849",
+	"username": "Fraze_"
+}, {
+	"id": "285309480416051200",
+	"username": "Deur3"
+}, {
+	"id": "348217881739264010",
+	"username": "CalenLoki"
+}, {
+	"id": "418725361891672064",
+	"username": "doot"
+}, {
+	"id": "413436259613016095",
+	"username": "Qrahn"
+}, {
+	"id": "155809631837487104",
+	"username": "GrandpaCheetah"
+}, {
+	"id": "271404992219447296",
+	"username": "Krasavice Blasen"
+}, {
+	"id": "338377763461267456",
+	"username": "Poimon"
+}, {
+	"id": "655382201038405632",
+	"username": "So0bek"
+}, {
+	"id": "326411880539226124",
+	"username": "Mito"
+}, {
+	"id": "186260996980080641",
+	"username": "Some1Gee"
+}, {
+	"id": "623452304905076737",
+	"username": "gg_gb20"
+}, {
+	"id": "219663786586537986",
+	"username": "Vladdican"
+}, {
+	"id": "245571855593766912",
+	"username": "AcceptableCasualties"
+}, {
+	"id": "390662318146715648",
+	"username": "AnotherKunkle"
+}, {
+	"id": "259149819908456450",
+	"username": "Aerzaal"
+}, {
+	"id": "148552084533280773",
+	"username": "Kap"
+}, {
+	"id": "260017895600291840",
+	"username": "dommy"
+}, {
+	"id": "312680806344818699",
+	"username": "turbo"
+}, {
+	"id": "196715167088771072",
+	"username": "Zaff"
+}, {
+	"id": "291325426662637568",
+	"username": "DarthBacon"
+}, {
+	"id": "679069910294331453",
+	"username": "Metz"
+}, {
+	"id": "238194337253556224",
+	"username": "BenCo"
+}, {
+	"id": "439193926650298381",
+	"username": "Meboy1000"
+}, {
+	"id": "497340145016504320",
+	"username": "Chad Revan"
+}, {
+	"id": "216072176149725194",
+	"username": "MuNk"
+}, {
+	"id": "335226016727564290",
+	"username": "Ryulord"
+}, {
+	"id": "197220716775604225",
+	"username": "Darknclaw"
+}, {
+	"id": "243578401082966016",
+	"username": "Salephz"
+}]

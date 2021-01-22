@@ -1,6 +1,4 @@
 import fs from "fs";
-import { send } from "process";
-import { formatWithOptions } from "util";
 // type TransactionDetails = "Payment issued through !pay" | "Chips claimed" | "Market purchase";
 interface DBItem {
 	_id: {
@@ -18,9 +16,6 @@ interface TransactionV1 extends DBItem {
 	type: ItemType.TransactionV1;
 }
 interface TransactionV2 extends DBItem {
-	_id: {
-		$oid: string;
-	};
 	sender_id: string;
 	receiver_id: string;
 	details: "Payment issued through !pay";
@@ -31,9 +26,6 @@ interface TransactionV2 extends DBItem {
 	type: ItemType.TransactionV2;
 }
 interface TransactionV3 extends DBItem {
-	_id: {
-		$oid: string;
-	};
 	sender_id: string;
 	receiver_id: string;
 	details: "Payment issued through !pay";
@@ -63,6 +55,7 @@ interface ChipClaim extends DBItem {
 		}
 	}>;
 	type: ItemType.ChipClaim;
+	amount: 1;
 }
 type Transaction = TransactionV1 | TransactionV2 | TransactionV3;
 type OtherItem = MarketBuy | ChipClaim;
@@ -78,6 +71,7 @@ interface SimpleTransaction {
 	sender: string;
 	reciever: string;
 	amount: number;
+	time: number;
 };
 function resolveType(item: Item): ItemType {
 	//@ts-ignore
@@ -107,8 +101,6 @@ const handledUsers: string[] = [];
 const transactions: SimpleTransaction[] = [];
 
 function makeUserData(id: string) {
-	handledUsers.push(id);
-
 	const recives: Record<string, number> = {};
 	const sends: Record<string, number> = {};
 	transactions.forEach(transaction => {
@@ -147,12 +139,14 @@ function init() {
 		let sender = "";
 		let reciever = "";
 		let amount = 0;
+		let time = 0;
 		switch (item.type) {
 			case ItemType.TransactionV1:
 				isTransaction = true;
 				sender = item.sender;
 				reciever = item.receiver;
 				amount = item.amount;
+				time = new Date(item.date.$date).getTime();
 				break;
 			case ItemType.TransactionV2:
 			case ItemType.TransactionV3:
@@ -160,10 +154,22 @@ function init() {
 				sender = item.sender_id;
 				reciever = item.receiver_id;
 				amount = item.amount;
+				time = new Date(item.date.$date).getTime();
+				break;
+			case ItemType.ChipClaim:
+				item.receivers.forEach(rec => {
+					time = new Date(rec.claim_date.$date).getTime();
+					transactions.push({
+						sender: "665310034514673686",
+						reciever: rec.user_id,
+						amount: item.amount,
+						time: time
+					});
+				});
 				break;
 		}
 		if (isTransaction) {
-			transactions.push({ sender, reciever, amount });
+			transactions.push({ sender, reciever, amount, time });
 		}
 	});
 }
@@ -174,22 +180,29 @@ function run() {
 	});
 }
 init();
-run();
+let log = "";
+transactions.forEach(transaction => {
+	log += `[${transaction.sender},${transaction.reciever},${transaction.amount},${transaction.time}],`;
+});
+fs.writeFileSync('../transactions.js', `const data = [${log}];`);
+// run();
 
-/*
-{
-  "_id": {
-	 "$oid": "60078e67399f0ef46d8a47b6"
-  },
-  "sender_id": "272143648114606083",
-  "receiver_id": "164525273503498240",
-  "details": "Payment issued through !pay",
-  "amount": 659,
-  "sender_chips_before": 659,
-  "receiver_chips_before": 394,
-  "class": "class objects.transactions.PersonalTransaction",
-  "date": {
-	 "$date": "2021-01-20T01:59:03.121Z"
-  }
-},
-*/
+
+// import Discord from "discord.js";
+// const client = new Discord.Client({
+// 	fetchAllMembers: true,
+// });
+// client.login("NjUwODAwOTcyNzA4NDQ2MjM5.XeQnow.NrH0-ofG2njeQWUegZ4xaFyoXKM");
+// client.on("ready", async () => {
+// 	console.log("Starting fetch");
+// 	const guild = await client.guilds.fetch("583599626280632320");
+// 	const membersCol = await guild.members.fetch();
+// 	const members = membersCol.array();
+// 	const data = members.filter(memb => handledUsers.includes(memb.id)).map(member => {
+// 		return { id: member.id, username: member.user.username };
+// 	});
+// 	console.log("Done");
+// 	console.log(data.length);
+// 	fs.writeFileSync("../usernames.json", JSON.stringify(data));
+// 	fs.writeFileSync("../usersnames.csv", data.map(user => `${user.id},${user.username}`).join("\n"));
+// });
